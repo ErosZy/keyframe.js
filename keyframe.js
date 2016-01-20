@@ -8,19 +8,19 @@ define('shop:page/pc/home/lib/keyframes.js', function(require, exports, module){
         return {
             _currentFrame: 1,
             _timer: null,
-            _scales: [],
+            _achor: [],
             load: function (container, imgUrl, frames, interval, achor) {
                 var self = this;
                 this._$container = $(container);
                 this._frames = frames;
                 this._interval = interval * 1000;
-                this._scales = scales;
+                this._achor = achor;
 
                 var w = self._$container.width();
                 var h = self._$container.height();
                 var offset = self._$container.position();
-                this._cx1 = self._scales[0] * w + offset.left;
-                this._cy1 = self._scales[1] * h + offset.top;
+                this._cx1 = self._achor[0] * w + offset.left;
+                this._cy1 = self._achor[1] * h + offset.top;
                 this._offset = offset;
 
                 var imgObj = new Image();
@@ -41,8 +41,8 @@ define('shop:page/pc/home/lib/keyframes.js', function(require, exports, module){
                 imgObj.src = imgUrl;
             },
             calPos: function (w, h) {
-                var gx = this._cx1 - this._scales[0] * w;
-                var gy = this._cy1 - this._scales[1] * h;
+                var gx = this._cx1 - this._achor[0] * w;
+                var gy = this._cy1 - this._achor[1] * h;
 
                 return {
                     x: gx,
